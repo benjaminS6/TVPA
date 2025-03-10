@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact support for any issues regarding the voting platform.">
+    <title data-translate>Contact Support - Voting Platform</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="help.html" data-translate>Help Home</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="how-to-vote.html" data-translate>How to Vote</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1 data-translate>Contact Support</h1>
+        <p data-translate>If you need further assistance, please reach out to us.</p>
+    </header>
+
+    <section>
+        <h2 data-translate>Send us a message</h2>
+        <form action="submit-form.php" method="POST">
+            <label for="name" data-translate>Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email" data-translate>Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message" data-translate>Your Message:</label>
+            <textarea id="message" name="message" placeholder="Type your message here" required></textarea>
+
+            <button type="submit" data-translate>Send</button>
+        </form>
+    </section>
+    <script src="translate.js"></script>
+    
+</body>
+</html>

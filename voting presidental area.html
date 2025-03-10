@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate>Election Ballot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #162dff;
+            padding: 15px 20px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-list li {
+            margin: 0 10px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            background: white;
+            height: 4px;
+            width: 25px;
+            margin: 3px 0;
+        }
+
+        table {
+            width: 90%;
+            max-width: 800px;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .bttn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: blue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-list li {
+                margin: 10px 0;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .bttn {
+                display: block;
+                width: 80%;
+                text-align: center;
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html" >Home</a></li>
+            <li><a href="About.html" data-translate>About</a></li>
+            <li><a href="Service.html"data-translate>Services</a></li>
+            <li><a href="Contact.html" data-translate="">Contact</a></li>
+            <li><a href="Help.html" data-translate>Help</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
+
+    <h2 style="color: blue;" data-translate><ins>VOTING AREA IS AVAILABLE FOR PRESIDENT OF THE REPUBLIC - 2024</ins></h2>
+    <br>
+    <table>
+        <tr>
+            <th data-translate>CANDIDATE NAMES</th>
+            <th data-translate>CANDIDATE IDENTIFICATION</th>
+            <th data-translate>CANDIDATE'S PHOTO</th>
+            <th data-translate>WHERE YOU VOTE</th>
+        </tr>
+        <tr>
+            <td data-translate>KAGAME PAUL</td>
+            <td><img src="kagamelogo.PNG" alt="Symbol"></td>
+            <td><img src="kagame.jpg" alt="Kagame Paul"></td>
+            <td><input type="radio" name="candidate" value="kagame"></td>
+        </tr>
+        <tr>
+            <td data-translate>HABINEZA FRANK</td>
+            <td><img src="franklogo.png" alt="Party Symbol"></td>
+            <td><img src="frank.jpg" alt="Habineza Frank"></td>
+            <td><input type="radio" name="candidate" value="habineza"></td>
+        </tr>
+        <tr>
+            <td data-translate>MPAYIMANA PHILIPPE</td>
+            <td><img src="philipelogo.PNG" alt="Graph Symbol"></td>
+            <td><img src="Philippe.JPG" alt="Mpayimana Philippe"></td>
+            <td><input type="radio" name="candidate" value="mpayimana"></td>
+        </tr>
+    </table>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+          
+
+        <style>
+            table {
+                width: 80%;
+                border-collapse: collapse;
+                margin: 20px auto;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 10px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        </style>
+        <h2 style="text-align: center; color: blue;" data-translate><ins>VOTING AREA FOR PARTIES
+            PRESIDENT OF THE REPUBLIC - 2024</ins></h2>
+            <br><br><br>
+        <table>
+            <div>
+            <tr>
+                <th data-translat>PARTY NAME</th>
+                <th data-translat>PARTY MARK</th>
+                <th data-translat>WHERE YOU VOTE</th>
+            </tr>
+            <tr>
+                <td data-translat>Party 1</td>
+                <td>
+                    <img src="party1_symbol.png" alt="Symbol">
+                </td>
+                <td><input type="radio" name="party" value="Party 1" class="vote-radio" /></td>
+            </tr>
+            <tr>
+                <td data-translat>Party 2</td>
+                <td>
+                    <img src="party2_symbol.png" alt="Symbol">
+                </td>
+                <td><input type="radio" name="party" value="Party 2" class="vote-radio" /></td>
+            </tr>
+            <tr>
+                <td data-translat>Party 3</td>
+                <td>
+                    <img src="party3_symbol.png" alt="Symbol">
+                </td>
+                <td><input type="radio" name="party" value="Party 3" class="vote-radio" /></td>
+            </tr><tr>
+            <td data-translat>Party 4</td>
+                <td>
+                    <img src="party1_symbol.png" alt="Symbol">
+                </td>
+                <td><input type="radio" name="party" value="Party 4" class="vote-radio" /></td>
+            </tr>
+            <tr>
+                <td data-translat>Party 5</td>
+                    <td>
+                        <img src="party1_symbol.png" alt="Symbol">
+                    </td>
+                    <td><input type="radio" name="party" value="Party 5" class="vote-radio" /></td>
+                </tr>
+                <tr>
+                    <td data-translat>Party 6</td>
+                        <td>
+                            <img src="party1_symbol.png" alt="Symbol">
+                        </td>
+                        <td><input type="radio" name="party" value="Party 6" class="vote-radio" /></td>
+                    </tr>
+        </table>
+    </div>
+
+    <br>
+    <a href="page2.html" class="bttn" data-translat>Submit</a>
+    <script src="translate.js"></script>
+</body>
+</html>

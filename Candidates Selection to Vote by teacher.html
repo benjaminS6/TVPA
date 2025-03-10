@@ -1,0 +1,394 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate>
+    ballot paper</title>
+  <link rel="stylesheet" href="candidates selection to vote by teacher.css">
+  <style>
+    .candidate-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .candidate-container {
+      position: relative;
+      width: 22%;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .candidate-container img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer; /* Indicate image is clickable */
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+    }
+
+    /* Styling the candidate details area */
+    .candidate-info {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      font-size: 16px;
+      display: none; /* Initially hidden */
+    }
+
+    /* Show the details when needed */
+    .candidate-info.active {
+      display: block;
+    }
+    .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #333;
+            padding: 15px 20px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-list li {
+            margin: 0 10px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            background: rgb(255, 255, 255);
+            height: 4px;
+            width: 25px;
+            margin: 3px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .nav-list li {
+                margin: 10px 0;
+            }
+        }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <ul class="nav-list">
+        <li><a href="./index.html" >Home</a></li>
+        <li><a href="./About.html" data-translate>About</a></li>
+        <li><a href="./Service.html" data-translate>Services</a></li>
+        <li><a href="./Contact.html" data-translate>Contact</a></li>
+        <li><a href="./Help.html" data-translate>Help</a></li>
+    </ul>
+</nav>
+  <div class="container">
+    <!-- Left Section -->
+    <div class="section" id="left-section">
+      <select id="candidateDropdownLeft" onchange="updateCandidateImagesLeft()">
+        <option value="candidate1" >Headboy</option>
+        <option value="candidate2" >Vice Headboy</option>
+        <option value="candidate3" >Refectorian</option>
+        <option value="candidate4" >Chief of Hygiene</option>
+      </select>
+      
+      <!-- Button to add new candidate -->
+      <button class="add-candidate-btn" onclick="addCandidate('left')">+ Add </button>
+
+      <div class="candidate-images">
+        <div class="candidate-container" ondblclick="triggerFileInput('left', 1)">
+          <img id="candidateImage1Left" src="./photos/student1.jpg" alt="no photo here">
+          <p id="candidateName1Left" data-translate>#</p>
+          <input type="file" id="fileInput1Left" accept="image/*" style="display:none" onchange="handleFileChange(event, 'left', 1)">
+        </div>
+        <div class="candidate-container" ondblclick="triggerFileInput('left', 2)">
+          <img id="candidateImage2Left" src="./photos/student2.jpg" alt="no photo here">
+          <p id="candidateName2Left" data-translate>#</p>
+          <input type="file" id="fileInput2Left" accept="image/*" style="display:none" onchange="handleFileChange(event, 'left', 2)">
+        </div>
+        <div class="candidate-container" ondblclick="triggerFileInput('left', 3)">
+          <img id="candidateImage3Left" src="./photos/student3.jpg" alt="no photo here">
+          <p id="candidateName3Left" data-translate>#</p>
+          <input type="file" id="fileInput3Left" accept="image/*" style="display:none" onchange="handleFileChange(event, 'left', 3)">
+        </div>
+        <div class="candidate-container" ondblclick="triggerFileInput('left', 4)">
+          <img id="candidateImage4Left" src="./photos/student4.jpg" alt="no photo here">
+          <p id="candidateName4Left" data-translate>#</p>
+          <input type="file" id="fileInput4Left" accept="image/*" style="display:none" onchange="handleFileChange(event, 'left', 4)">
+        </div>
+      </div>
+
+      <h3 data-translate>Enter Candidate Details for Left Section</h3>
+      <form id="candidateFormLeft">
+        <label for="candidateNameLeft" data-translate>Name:</label>
+        <input type="text" id="candidateNameLeft" name="candidateNameLeft" placeholder="Enter candidate's name"><br><br>
+
+        <label for="candidateDetailsLeft" data-translate>Details:</label>
+        <textarea id="candidateDetailsLeft" name="candidateDetailsLeft" placeholder="Enter candidate's details"></textarea><br><br>
+
+        <button type="submit" data-translate>Submit Details</button>
+      </form>
+    </div>
+
+    <!-- Right Section -->
+    <div class="section" id="right-section">
+      <select id="candidateDropdownRight" onchange="updateCandidateImagesRight()">
+        <option value="candidate1" >Headgirl</option>
+        <option value="candidate2" >Vice Headgirl</option>
+        <option value="candidate3" >Refectorienne</option>
+        <option value="candidate4" >Chief of Hygiene</option>
+      </select>
+      <!-- Button to add new candidate -->
+      <button class="add-candidate-btn" onclick="addCandidate('right')">+ Add </button>
+
+      <div class="candidate-images">
+        <div class="candidate-container" ondblclick="triggerFileInput('right', 1)">
+          <img id="candidateImage1Right" src="./photos/student5.jpg" alt="no photo here">
+          <p id="candidateName1Right">#</p>
+          <input type="file" id="fileInput1Right" accept="image/*" style="display:none" onchange="handleFileChange(event, 'right', 1)">
+        </div>
+        <div class="candidate-container" ondblclick="triggerFileInput('right', 2)">
+          <img id="candidateImage2Right" src="./photos/student6.jpg" alt="no photo here">
+          <p id="candidateName2Right">#</p>
+          <input type="file" id="fileInput2Right" accept="image/*" style="display:none" onchange="handleFileChange(event, 'right', 2)">
+        </div>
+        <div class="candidate-container" ondblclick="triggerFileInput('right', 3)">
+          <img id="candidateImage3Right" src="./photos/student7.jpg" alt="no photo here">
+          <p id="candidateName3Right">#</p>
+          <input type="file" id="fileInput3Right" accept="image/*" style="display:none" onchange="handleFileChange(event, 'right', 3)">
+        </div>
+        <div class="candidate-container" ondblclick="triggerFileInput('right', 4)">
+          <img id="candidateImage4Right" src="./photos/student8.jpg" alt="no photo here">
+          <p id="candidateName4Right">#</p>
+          <input type="file" id="fileInput4Right" accept="image/*" style="display:none" onchange="handleFileChange(event, 'right', 4)">
+        </div>
+      </div>
+
+      <h3 data-translate>Enter Candidate Details for Right Section</h3>
+      <form id="candidateFormRight">
+        <label for="candidateNameRight" data-translate>Name:</label>
+        <input type="text" id="candidateNameRight" name="candidateNameRight" placeholder="Enter candidate's name"><br><br>
+
+        <label for="candidateDetailsRight" data-translate>Details:</label>
+        <textarea id="candidateDetailsRight" name="candidateDetailsRight" placeholder="Enter candidate's details"></textarea><br><br>
+
+        <button type="submit" data-translate>Submit Details</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Candidate Information at the Bottom -->
+  <div id="candidateInfoLeft" class="candidate-info">
+    <p data-translate>Candidate Information will appear here for Left Section</p>
+  </div>
+
+  <div id="candidateInfoRight" class="candidate-info">
+    <p data-translate>Candidate Information will appear here for Right Section</p>
+  </div>
+
+  
+   <script>
+   // Function to trigger file input on double-click
+function triggerFileInput(section, candidateIndex) {
+  document.getElementById('fileInput' + candidateIndex + section.charAt(0).toUpperCase() + section.slice(1)).click();
+}
+
+// Function to handle file change and update image
+function handleFileChange(event, section, candidateIndex) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('candidateImage' + candidateIndex + section.charAt(0).toUpperCase() + section.slice(1)).src = e.target.result;
+    // Optionally update candidate name to file name or a custom name
+    document.getElementById('candidateName' + candidateIndex + section.charAt(0).toUpperCase() + section.slice(1)).textContent = file.name;
+  }
+  reader.readAsDataURL(file);
+}
+
+// Handling form submission for Right Section
+document.getElementById('candidateFormRight').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const candidateName = document.getElementById('candidateNameRight').value;
+  const candidateDetails = document.getElementById('candidateDetailsRight').value;
+
+  // Displaying candidate info only after submit
+  document.getElementById('candidateInfoRight').innerHTML = ` 
+    <h4>Candidate Name: ${candidateName}</h4>
+    <p>Details: ${candidateDetails}</p>
+  `;
+  document.getElementById('candidateInfoRight').classList.add('active');
+});
+
+// Function to add a new candidate to the dropdown
+function addCandidate(section) {
+  const newCandidate = prompt("Enter the name of the new candidate position:");
+
+  if (newCandidate) {
+    const dropdown = document.getElementById(`candidateDropdown${section.charAt(0).toUpperCase() + section.slice(1)}`);
+    const newOption = document.createElement("option");
+    newOption.value = `candidate${dropdown.options.length + 1}`;
+    newOption.textContent = newCandidate;
+    dropdown.appendChild(newOption);
+  }
+}
+
+// To keep track of previously selected candidates
+let selectedLeftCandidates = [];
+let selectedRightCandidates = [];
+
+// Function to update images for the left section
+function updateCandidateImagesLeft() {
+  var selectedCandidateLeft = document.getElementById("candidateDropdownLeft").value;
+
+  if (selectedLeftCandidates.includes(selectedCandidateLeft)) {
+    alert("You've already finished voting in this category!");
+    return; // Prevent selecting the same category again
+  }
+
+  selectedLeftCandidates.push(selectedCandidateLeft); // Add to the selected list
+
+  if (selectedCandidateLeft === "candidate1") {
+    document.getElementById("candidateImage1Left").src = "./photos/student1.jpg";
+    document.getElementById("candidateImage2Left").src = "./photos/student2.jpg";
+    document.getElementById("candidateImage3Left").src = "./photos/student3.jpg";
+    document.getElementById("candidateImage4Left").src = "./photos/student4.jpg";
+    document.getElementById("candidateInfoLeft").innerHTML = "<p>Information about Headboy</p>";
+  } else if (selectedCandidateLeft === "candidate2") {
+    document.getElementById("candidateImage1Left").src = "./photos/student9.jpg";
+    document.getElementById("candidateImage2Left").src = "./photos/student10.jpg";
+    document.getElementById("candidateImage3Left").src = "./photos/student11.jpg";
+    document.getElementById("candidateImage4Left").src = "./photos/student12.jpg";
+    document.getElementById("candidateInfoLeft").innerHTML = "<p>Information about Vice Headboy</p>";
+  } else if (selectedCandidateLeft === "candidate3") {
+    document.getElementById("candidateImage1Left").src = "./photos/student13.jpg";
+    document.getElementById("candidateImage2Left").src = "./photos/student14.jpg";
+    document.getElementById("candidateImage3Left").src = "./photos/student15.jpg";
+    document.getElementById("candidateImage4Left").src = "./photos/student16.jpg";
+    document.getElementById("candidateInfoLeft").innerHTML = "<p>Information about Refectorian</p>";
+  } else if (selectedCandidateLeft === "candidate4") {
+    document.getElementById("candidateImage1Left").src = "./photos/student17.jpg";
+    document.getElementById("candidateImage2Left").src = "./photos/student18.jpg";
+    document.getElementById("candidateImage3Left").src = "./photos/student19.jpg";
+    document.getElementById("candidateImage4Left").src = "./photos/student20.jpg";
+    document.getElementById("candidateInfoLeft").innerHTML = "<p>Information about Chief of Hygiene</p>";
+  }
+}
+
+// Function to update images for the right section
+function updateCandidateImagesRight() {
+  var selectedCandidateRight = document.getElementById("candidateDropdownRight").value;
+
+  if (selectedRightCandidates.includes(selectedCandidateRight)) {
+    alert("You've already selected this category!");
+    return; // Prevent selecting the same category again
+  }
+
+  selectedRightCandidates.push(selectedCandidateRight); // Add to the selected list
+
+  if (selectedCandidateRight === "candidate1") {
+    document.getElementById("candidateImage1Right").src = "./photos/hdb1.jpg";
+    document.getElementById("candidateImage2Right").src = "./photos/hdb2.jpg";
+    document.getElementById("candidateImage3Right").src = "./photos/hdb3.jpg";
+    document.getElementById("candidateImage4Right").src = "./photos/hdb4.jpg";
+    document.getElementById("candidateInfoRight").innerHTML = "<p>Information about Headgirl</p>";
+  } else if (selectedCandidateRight === "candidate2") {
+    document.getElementById("candidateImage1Right").src = "./photos/vchdb1.jpg";
+    document.getElementById("candidateImage2Right").src = "./photos/vchdb2.jpg";
+    document.getElementById("candidateImage3Right").src = "./photos/vchdb3.jpg";
+    document.getElementById("candidateImage4Right").src = "./photos/vchdb4.jpg";
+    document.getElementById("candidateInfoRight").innerHTML = "<p>Information about Vice Headgirl</p>";
+  } else if (selectedCandidateRight === "candidate3") {
+    document.getElementById("candidateImage1Right").src = "./photos/student5.jpg";
+    document.getElementById("candidateImage2Right").src = "./photos/student6.jpg";
+    document.getElementById("candidateImage3Right").src = "./photos/student7.jpg";
+    document.getElementById("candidateImage4Right").src = "./photos/student8.jpg";
+    document.getElementById("candidateInfoRight").innerHTML = "<p>Information about Refectorienne</p>";
+  } else if (selectedCandidateRight === "candidate4") {
+    document.getElementById("candidateImage1Right").src = "./photos/hygiene1.jpg";
+    document.getElementById("candidateImage2Right").src = "./photos/hygiene2.jpg";
+    document.getElementById("candidateImage3Right").src = "./photos/hygiene3.jpg";
+    document.getElementById("candidateImage4Right").src = "./photos/hygiene4.jpg";
+    document.getElementById("candidateInfoRight").innerHTML = "<p>Information about Chief of Hygiene</p>";
+  }
+}
+
+    // Function to go to the next combobox
+    function nextDropdown(section) {
+      if (section === 'left') {
+        document.getElementById("candidateDropdownLeft").selectedIndex++;
+        updateCandidateImagesLeft();
+      } else if (section === 'right') {
+        document.getElementById("candidateDropdownRight").selectedIndex++;
+        updateCandidateImagesRight();
+      }
+    }
+    
+  </script>
+   
+       
+</script>
+
+   <button type="finish edit" data-translate> <p1>FINISH TO EDIT</p1> </button>
+   <button type="start" data-translate> <p1>initiate elections</p1> </button>
+   <button type="stop" data-translate> <p1>stop elections</p1> </button>
+   <script src="translate.js"></script>
+   <script src="stopElection.js" ></script>
+    
+</body>
+</html>

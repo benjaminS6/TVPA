@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Firebase SDK -->
+ <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin & Member Logins</title>
+    <link rel="stylesheet" href="Admin login.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #148559;
+        }
+        .container {
+            display: flex;
+            gap: 50px;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 200px;
+            height: 250px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: transform 0.3s;
+            padding: 15px;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+        .card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 24px;  
+            font-weight: bold;
+            max-width: 100%;  
+            word-wrap: break-word;  
+            text-align: center;
+        }
+        /* Admin Login Form Style */
+        .admin-form {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .admin-form input {
+            padding: 10px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .admin-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #148559;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .admin-form button:hover {
+            background-color: #116b44;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD1kpUjLGenqQB1QL_KMOyp54FaOqf4tfk",
+  authDomain: "tvpa-60c0a.firebaseapp.com",
+  projectId: "tvpa-60c0a",
+  storageBucket: "tvpa-60c0a.firebasestorage.app",
+  messagingSenderId: "1071463678694",
+  appId: "1:1071463678694:web:810c3ac3a5a4c783a87127",
+  measurementId: "G-G4E2JHFYZS"
+};
+
+        const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+</script>
+    
+<div class="admin-form" id="admin-form">
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter Username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter Password" required>
+
+    <button onclick="submitAdminLogin()">Login</button>
+</div>
+
+    <div class="container">
+        <!-- Member Card -->
+        <div class="card" onclick="goToPage('coperative dashboard.html')">
+          <a href="coperative dashboard.html">  <img src="member-icon.png" alt="member">
+            <p style="font-size: 19px;" data-translate>Member</p></a>
+        </div>
+
+        <!-- Admin Card -->
+        <div class="card" onclick="showAdminForm()">
+            <img src="admin-icon.png" style="color: rgb(94, 46, 139)" alt="admin">
+            <p style="color: rgb(94, 46, 139);" data-translate><ins>Admin</ins></p>
+        </div>
+    </div>
+
+    <!-- Admin Login Form -->
+    <div class="admin-form" id="admin-form">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+     <a href="Admin of coperative.html"><button onclick="submitAdminLogin()">Login</button></a>
+    </div>
+
+    <script>
+        function goToPage(page) {
+            window.location.href = page;
+        }
+
+        function showAdminForm() {
+            // Hide the card view and show login form for admin
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('admin-form').style.display = 'flex';
+        }
+
+        function submitAdminLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Here you can implement your authentication process
+            if (username === 'admin' && password === 'admin123') {
+                alert('Login Successful!');
+                // Redirect to admin dashboard
+                window.location.href = 'Admin of coperative.html';
+            } else {
+                alert('Invalid Username or Password');
+            }
+        }
+    </script>
+    <script src="translate.js"></script>
+</body>
+</html>
