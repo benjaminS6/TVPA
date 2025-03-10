@@ -1,6 +1,6 @@
 /* General Styles for the Menu */
 .menu {
-    background-color: #333;
+    background-color: #0f5ef1;
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -16,7 +16,7 @@
 }
 
 .menu a:hover {
-    background-color: #ddd;
+    background-color: #7e6d6d;
     color: black;
 }
 
