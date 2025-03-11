@@ -11,10 +11,12 @@ body {
     background-color: #4CAF50;
     padding: 15px;
     text-align: center;
+    display= flex;
 }
 
 .navbar h2 {
     color: white;
+    display= flex;
 }
 
 /* Container for the form */
